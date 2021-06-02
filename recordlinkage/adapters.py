@@ -121,9 +121,9 @@ class KerasAdapter(object):
 
         return prediction
 
-    def _fit(self, features, y=None):
-
-        self.kernel.fit(features, y)
+    def _fit(self, features, y=None, epochs=1):
+        
+        self.kernel.fit(features, y, epochs=epochs)
 
     def _prob_match(self, features):
         """Compute match probabilities.

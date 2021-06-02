@@ -919,7 +919,7 @@ class BaseClassifier(metaclass=ABCMeta):
     def _fit(self, *args, **kwargs):
         pass
 
-    def fit(self, comparison_vectors, match_index=None):
+    def fit(self, comparison_vectors, match_index=None, *args, **kwargs):
         """Train the classifier.
 
         Parameters
@@ -964,10 +964,10 @@ class BaseClassifier(metaclass=ABCMeta):
                 else:
                     raise err
 
-            self._fit(comparison_vectors.values, y.values)
+            self._fit(comparison_vectors.values, y.values, *args, **kwargs)
 
         elif match_index is None:
-            self._fit(comparison_vectors.values)
+            self._fit(comparison_vectors.values, *args, **kwargs)
         else:
             raise ValueError(
                 "'match_index' has incorrect type '{}'".format(
